@@ -9,7 +9,7 @@ Jest to bardzo wczesna wersja, powiedzmy `v0.0.1`. Zrobiony z zajawki, na razie 
 1. Wyfiltrowanie potencjalnie dających się przetłumaczyć artykułów (ignorowanie domeny `.pl` oraz niektórych domen)
 1. Dla każdego linku
     1. Otworzenie go przeglądarce oraz wczytanie kodu html ([selenium](https://github.com/SeleniumHQ/selenium) + [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/))
-    1. Wyekstrachowanie i skopiowanie treści artykułu ([newspaper3k](https://github.com/codelucas/newspaper))
+    1. Wyekstrachowanie i zapisanie treści artykułu ([newspaper3k](https://github.com/codelucas/newspaper))
     1. Otworzenie tłumacza DeepL w przeglądarce
     1. Wklejenie artykułu do tłumacza
     1. Wykrycie języka artykułu - jeżli jest w języku polskim, zaprzestanie kontynuowania
@@ -18,7 +18,6 @@ Jest to bardzo wczesna wersja, powiedzmy `v0.0.1`. Zrobiony z zajawki, na razie 
 ## Wymagania
 - Python 3
 - [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/)
-- Przy uruchamianiu na Linuxie - xclip lub xsel
 
 ## Instalacja i uruchomienie
 Utworzenie pliku `config.yaml` korzystając z [example.config.yaml](https://github.com/burnoo/transbot-wykop/blob/master/example.config.yaml)

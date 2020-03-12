@@ -1,6 +1,5 @@
 import time
 import re
-import pyperclip
 from selenium.webdriver.common.keys import Keys
 
 
@@ -17,10 +16,9 @@ def get_translation(driver, text, sleep_seconds=10):
 
     text = strip_text(text)
     
-    pyperclip.copy(text)
-
     textarea_source.clear()
-    textarea_source.send_keys(Keys.SHIFT, Keys.INSERT)
+    driver.execute_script("arguments[0].value = arguments[1]", textarea_source, text)
+    textarea_source.send_keys(" ")
     
     time.sleep(sleep_seconds)
     lang = textarea_source.get_attribute("lang")
