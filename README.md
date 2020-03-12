@@ -18,6 +18,7 @@ Jest to bardzo wczesna wersja, powiedzmy `v0.0.1`. Zrobiony z zajawki, na razie 
 ## Wymagania
 - Python 3
 - [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/)
+- Przy uruchamianiu na Linuxie - xclip lub xsel
 
 ## Instalacja i uruchomienie
 Utworzenie pliku `config.yaml` korzystając z [example.config.yaml](https://github.com/burnoo/transbot-wykop/blob/master/example.config.yaml)
