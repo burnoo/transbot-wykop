@@ -6,7 +6,7 @@ Jest to bardzo wczesna wersja, powiedzmy `v0.0.1`. Zrobiony z zajawki, na razie 
 ## Algorytm
 (wszystko w `5` minutowej pętli)
 1. Pobranie najnowszych linków z API wykopu ([wykop-sdk](https://github.com/p1c2u/wykop-sdk))
-1. Wyfiltrowanie potencjalnie dających się przetłumaczyć artykułów (ignorowanie domeny `.pl` oraz niektórych domen)
+1. Wyfiltrowanie potencjalnie dających się przetłumaczyć artykułów (ignorowanie `.pl` oraz niektórych domen)
 1. Dla każdego linku
     1. Otworzenie go przeglądarce oraz wczytanie kodu html ([selenium](https://github.com/SeleniumHQ/selenium) + [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/))
     1. Wyekstrachowanie i zapisanie treści artykułu ([newspaper3k](https://github.com/codelucas/newspaper))
