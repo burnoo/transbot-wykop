@@ -2,8 +2,9 @@ ignored_domains = [
     "youtube.com",
     "youtu.be",
     "streamable.com",
-    "liveleak.com"
+    "liveleak.com",
     "instagram.com",
     "tvp.info",
-    "twitter.com"
+    "twitter.com",
+    "facebook.com",
 ]
