@@ -1,5 +1,5 @@
 # transbot-wykop
-Bot tłumaczący artykuły z wykop.pl przy pomocy translatora deepl.com napisany w Pythonie. Docelowo będzie dodawał komentarz z tłumaczeniem pod wykopem.
+Bot tłumaczący artykuły z wykop.pl przy pomocy translatora deepl.com napisany w Pythonie. Wystawia komentarz z tłumaczeniem pod wykopem.
 
 Jest to bardzo wczesna wersja, powiedzmy `v0.0.1`. Zrobiony z zajawki, na razie ma bardzo ograniczoną funkcjonalność. Jeżeli się przyjmie to będę go rozwijał, zapraszam też do wystawiania PR.
 

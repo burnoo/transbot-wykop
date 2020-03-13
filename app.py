@@ -17,7 +17,7 @@ def handle_links(links):
             translation = get_translation(driver, article)
             if translation:
                 print(translation)
-                # TODO: add_comment(link.id, "tresc")
+                add_comment(link.id, translation)
             else:
                 print(
                     "###",
