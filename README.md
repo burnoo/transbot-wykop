@@ -4,7 +4,7 @@ Bot tłumaczący artykuły z wykop.pl przy pomocy translatora deepl.com napisany
 Jest to bardzo wczesna wersja, powiedzmy `v0.0.1`. Zrobiony z zajawki, na razie ma bardzo ograniczoną funkcjonalność. Jeżeli się przyjmie to będę go rozwijał, zapraszam też do wystawiania PR.
 
 ## Algorytm
-(wszystko w `3` minutowej pętli)
+(wszystko w `5` minutowej pętli)
 1. Pobranie najnowszych linków z API wykopu ([wykop-sdk](https://github.com/p1c2u/wykop-sdk))
 1. Wyfiltrowanie potencjalnie dających się przetłumaczyć artykułów (ignorowanie `.pl` oraz niektórych domen)
 1. Dla każdego linku
@@ -33,7 +33,6 @@ python3 app.py
 ## TODO - co można zrobić
 - przejście na API v2
 - usuwanie nietrafionych tłumaczeń na podstawie proporcji plusów i minusów
-- zapisywanie `id` przetłumaczonych artykułów w bazie danych, co pozwoli na usunięcie logiki, która opiera się na interwale  oraz filtrowaniu po czasie
 - przerobienie aplikacji na rozwiązanie oparte na cronie (+ dockerze) tak, aby nie wykonywać `while(true)`
 - dodanie usuwania ciasteczek po skorzystaniu z tłumacza (mi się nie udawało), tak aby nie tworzyć przy każdym artykule nowej instancji ChromeDriver (jest to potrzebne żeby nie przełączał się język tłumaczenia na inny niż polski, można też to uzyskać klikając odpowiednie przyciski)
 - sensowniejsza architektura w projekcie (Python to zdecydowanie nie "mój" język ;))

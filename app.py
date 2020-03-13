@@ -4,7 +4,7 @@ from translation import get_translation
 from wykop_api import authenticate_api, get_links, add_comment
 import time
 
-interval_minutes = 3
+interval_minutes = 5
 driver = None
 
 def log(*messages):
@@ -39,7 +39,7 @@ while True:
     log("### fetching new links")
     try:
         authenticate_api()
-        links = get_links(interval_minutes)
+        links = get_links()
         log("### number of matching links: " + str(len(links)))
         handle_links(links)
     except Exception as e:

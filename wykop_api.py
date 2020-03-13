@@ -1,14 +1,30 @@
-from datetime import datetime, timedelta
 import wykop
-import pytz
 import yaml
+import pickle
+import os
 
+checked_filename = "checked.pickle"
 config = yaml.safe_load(open("config.yaml"))
 api = wykop.WykopAPI(config["app_key"], config["secret_key"])
-tz = pytz.timezone("Europe/Warsaw")
+
+
+def get_checked():
+    if os.path.exists(checked_filename):
+        with open(checked_filename, "rb") as file:
+            return pickle.load(file)
+    else:
+        return []
+
+
+def update_checked(old_checked, new_checked):
+    checked = old_checked + new_checked
+    with open(checked_filename, "wb") as file:
+        pickle.dump(checked, file)
+
 
 def authenticate_api():
     api.authenticate(config["account_login"], config["account_key"])
+
 
 def filter_url(url):
     domain = url.split("/")[2]
@@ -16,21 +32,13 @@ def filter_url(url):
     return domain[-3:] != ".pl" and all([i not in domain for i in ignored_domains])
 
 
-def filter_in_interval(date, interval_minutes, now):
-    dt = datetime.strptime(date, "%Y-%m-%d %H:%M:%S").replace(tzinfo=tz)
-    return now - dt < timedelta(minutes=interval_minutes)
-
-
-def get_links(interval_minutes):
-    now = datetime.now(tz).replace(tzinfo=tz)
-
-    links = api.get_links_upcoming()
+def get_links():
+    checked = get_checked()
+    links = api.get_links_promoted() + api.get_links_upcoming()
     links_filtered = [
-        link
-        for link in links
-        if filter_url(link.source_url)
-        and filter_in_interval(link.date, interval_minutes, now)
+        link for link in links if filter_url(link.source_url) and link.id not in checked
     ]
+    update_checked(checked, [link.id for link in links_filtered])
     return links_filtered
 
 
