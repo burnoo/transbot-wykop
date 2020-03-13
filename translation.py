@@ -9,7 +9,7 @@ def strip_text(text):
     return re_pattern.sub(u"\uFFFD", text)
 
 
-def get_translation(driver, text, sleep_seconds=10):
+def get_translation(driver, text, sleep_seconds=20):
     driver.get("https://www.deepl.com/pl/translator")
     textarea_source = driver.find_element_by_class_name("lmt__source_textarea")
     textarea_translation = driver.find_element_by_class_name("lmt__target_textarea")

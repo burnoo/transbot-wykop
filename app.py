@@ -4,7 +4,7 @@ from translation import get_translation
 from wykop_api import get_links, add_comment
 import time
 
-interval_minutes = 5
+interval_minutes = 3
 driver = None
 
 while True:
