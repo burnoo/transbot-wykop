@@ -6,7 +6,6 @@ from ignored_domains import ignored_domains
 
 config = yaml.safe_load(open("config.yaml"))
 api = wykop.WykopAPI(config["app_key"], config["secret_key"])
-api.authenticate(config["account_login"], config["account_key"])
 tz = pytz.timezone("Europe/Warsaw")
 
 def authenticate_api():
