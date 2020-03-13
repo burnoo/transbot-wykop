@@ -7,4 +7,6 @@ ignored_domains = [
     "tvp.info",
     "twitter.com",
     "facebook.com",
+    "zippyshare.com",
+    "9gag.com"
 ]
