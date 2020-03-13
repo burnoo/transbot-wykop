@@ -2,7 +2,6 @@ from datetime import datetime, timedelta
 import wykop
 import pytz
 import yaml
-from ignored_domains import ignored_domains
 
 config = yaml.safe_load(open("config.yaml"))
 api = wykop.WykopAPI(config["app_key"], config["secret_key"])
@@ -13,6 +12,7 @@ def authenticate_api():
 
 def filter_url(url):
     domain = url.split("/")[2]
+    ignored_domains = yaml.safe_load(open("ignored_domains.yaml"))
     return domain[-3:] != ".pl" and all([i not in domain for i in ignored_domains])
 
 
