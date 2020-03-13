@@ -4,10 +4,13 @@ import pytz
 import yaml
 from ignored_domains import ignored_domains
 
-config = yaml.safe_load(open('config.yaml'))
-api = wykop.WykopAPI(config['app_key'], config['secret_key'])
+config = yaml.safe_load(open("config.yaml"))
+api = wykop.WykopAPI(config["app_key"], config["secret_key"])
+api.authenticate(config["account_login"], config["account_key"])
 tz = pytz.timezone("Europe/Warsaw")
 
+def authenticate_api():
+    api.authenticate(config["account_login"], config["account_key"])
 
 def filter_url(url):
     domain = url.split("/")[2]
@@ -20,8 +23,6 @@ def filter_in_interval(date, interval_minutes, now):
 
 
 def get_links(interval_minutes):
-    api.authenticate(config['account_login'], config['account_key'])
-
     now = datetime.now(tz).replace(tzinfo=tz)
 
     links = api.get_links_upcoming()
@@ -34,5 +35,13 @@ def get_links(interval_minutes):
     return links_filtered
 
 
-def add_comment(link_id, comment):
-    api.add_comment(link_id=link_id, comment_id=None, body=comment)
+comment = """**Transbot v0.0.1** - bot tłumaczący artykuły przy pomocy deepl.com | [GitHub](https://github.com/burnoo/transbot-wykop)
+_Przetłumaczony artykuł:_
+
+{}
+
+P.S. Proszę administrację o odblokowanie dostępu do dodawania nowych aplikacji API dla [konta bota](http://www.wykop.pl/ludzie/transbot) - wolałbym żeby to z niego były pisane komentarze. Przez panel kontaktowy niestety się nie udało :("""
+
+
+def add_comment(link_id, text):
+    api.add_comment(link_id=link_id, comment_id=None, body=comment.format(text))
