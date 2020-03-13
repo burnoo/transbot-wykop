@@ -31,7 +31,9 @@ python3 app.py
 - dodawanie informacji o ciasteczkach lub multimediach zamiast artykułów
 
 ## TODO - co można zrobić
+- przejście na API v2
 - usuwanie nietrafionych tłumaczeń na podstawie proporcji plusów i minusów
 - zapisywanie `id` przetłumaczonych artykułów w bazie danych, co pozwoli na usunięcie logiki, która opiera się na interwale  oraz filtrowaniu po czasie
 - przerobienie aplikacji na rozwiązanie oparte na cronie (+ dockerze) tak, aby nie wykonywać `while(true)`
 - dodanie usuwania ciasteczek po skorzystaniu z tłumacza (mi się nie udawało), tak aby nie tworzyć przy każdym artykule nowej instancji ChromeDriver (jest to potrzebne żeby nie przełączał się język tłumaczenia na inny niż polski, można też to uzyskać klikając odpowiednie przyciski)
+- sensowniejsza architektura w projekcie (Python to zdecydowanie nie "mój" język ;))
