@@ -1,7 +1,7 @@
-from driver import create_driver
-from article import get_article
-from translation import get_translation
-from wykop_api import authenticate_api, get_links, add_comment
+from utils.driver import create_driver
+from utils.article import get_article
+from utils.translation import get_translation
+from utils.wykop_api import authenticate_api, get_links, add_comment
 import time
 
 interval_minutes = 5
