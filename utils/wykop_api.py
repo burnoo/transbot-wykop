@@ -44,7 +44,7 @@ def get_links():
     return links_filtered
 
 
-comment = """**Transbot v0.0.1** - bot tłumaczący artykuły przy pomocy deepl.com | [GitHub](https://github.com/burnoo/transbot-wykop)
+comment = """**Transbot v0.0.1** - bot tłumaczący artykuły przy pomocy deepl.com | [GitHub](https://github.com/burnoo/transbot-wykop) | #transbot
 _Przetłumaczony artykuł:_
 
 {}
