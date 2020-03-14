@@ -3,14 +3,15 @@ import yaml
 import pickle
 import os
 
-checked_filename = "checked.pickle"
+dir_path = os.path.dirname(os.path.realpath(__file__))
+checked_path = os.path.join(dir_path, "checked.pickle")
 config = yaml.safe_load(open("config.yaml"))
 api = wykop.WykopAPI(config["app_key"], config["secret_key"])
 
 
 def get_checked():
-    if os.path.exists(checked_filename):
-        with open(checked_filename, "rb") as file:
+    if os.path.exists(checked_path):
+        with open(checked_path, "rb") as file:
             return pickle.load(file)
     else:
         return []
@@ -18,7 +19,7 @@ def get_checked():
 
 def update_checked(old_checked, new_checked):
     checked = old_checked + new_checked
-    with open(checked_filename, "wb") as file:
+    with open(checked_path, "wb") as file:
         pickle.dump(checked, file)
 
 
@@ -28,8 +29,8 @@ def authenticate_api():
 
 def filter_url(url):
     domain = url.split("/")[2]
-    ignored_domains = yaml.safe_load(open("ignored_domains.yaml"))
-    return domain[-3:] != ".pl" and all([i not in domain for i in ignored_domains])
+    ignored_domains = yaml.safe_load(os.path.join(dir_path, "ignored_domains.yaml"))
+    return (domain[-3:] != ".pl" and all([i not in domain for i in ignored_domains]))
 
 
 def get_links():
