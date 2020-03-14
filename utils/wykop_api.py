@@ -5,6 +5,7 @@ import os
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 checked_path = os.path.join(dir_path, "checked.pickle")
+ignored_domains_path = os.path.join(dir_path, "ignored_domains.yaml")
 config = yaml.safe_load(open("config.yaml"))
 api = wykop.WykopAPI(config["app_key"], config["secret_key"])
 
@@ -29,8 +30,8 @@ def authenticate_api():
 
 def filter_url(url):
     domain = url.split("/")[2]
-    ignored_domains = yaml.safe_load(os.path.join(dir_path, "ignored_domains.yaml"))
-    return (domain[-3:] != ".pl" and all([i not in domain for i in ignored_domains]))
+    ignored_domains = yaml.safe_load(open(ignored_domains_path))
+    return domain[-3:] != ".pl" and all([i not in domain for i in ignored_domains])
 
 
 def get_links():
